@@ -1,6 +1,269 @@
+/* COMMON */
 .body__container {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     color: #333;
 }
+
+a {
+    text-decoration: none;
+}
+
+/* FLOAT CLEARFIX */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.float--left {
+    float: left;
+}
+
+.float--right {
+    float: right;
+}
+
+/* BTN */
+.btn {
+    height: 34px;
+    background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
+    border: 1px sloid #d5d5d5;
+    border-radius: 4px;
+    display: inline-flex; 
+    /* width:auto(100%와 유사하게 동작함) */
+    /* inline으로 정의하면 모든 넓이를 사용하지 않고 안에 있는 컨텐츠에 맞춰줌 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    cursor: pointer;
+
+    /* padding, border가 들어간 경우 사이즈가 커지는걸 방지해줌 */
+    box-sizing: border-box;
+    position: relative;
+    color: #333;
+}
+
+.btn:hover::before {
+    /* 
+    가상 선택자를 사용하여 position을 지정하는 경우 부모요소의 position을 확인한다.
+    만약 부모요소 position이 없는경우 부모요소 position은 relative로 명시한다.
+    */
+    content: "";
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.07);
+}
+
+.btn.btn--primary {
+    border: 1px solid #65b836;
+    color: #fff;
+    background: #55a532 linear-gradient(#91dd70, #55ae2e);
+
+}
+
+/* INPUT TEXT */
+.input--text {
+    height: 34px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    /* focus된 경우 아웃라인 없애기 */
+    outline: none;
+
+    /*
+    inset을 사용하면 shadow가 안쪽으로 생김
+    x축, y축, 두께, rgba(r, g, b, alpha channel)  
+    */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    font-size: 16px;
+}
+
+.input--text:focus {
+    border-color: #51a7e8;
+
+    /* 쉼표를 이용하여 shadow를 다중으로 사용할 수 있다. */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075)
+                , 0 0 5px rgba(81, 167, 232, 0.5);
+}
+
+/* 
+placeholder를 변경하는건 표준이 없음 Vendor Prefix를 작성해야함 
+해당 Vendor의 browser에서 실험적으로 사용할 수 있는 기능이라는 것을 의미함
+webkit: chrome
+ms: mircroSoft
+moz: mozila (FireFox)
+*/
+.input--text::-webkit-input-placeholder {
+    color: #cacaca;
+}
+
+.input--text::-ms-input-placeholder {
+    color: #cacaca;
+}
+
+.input--text::-moz-input-placeholder {
+    color: #cacaca;
+}
+
+/* HEADER */
+header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+    background: #FFF;
+}
+
+/*
+height는 default가 auto이다.
+따라서 안에있는 content의 height의 영향을 받는다.
+margin을 사용하기 위해서는 width가 반드시 정의되어야 한다.
+매우 많이 사용하는 방법이니 꼭 기억해야함!
+*/
+header .inner {
+    max-width: 980px;
+    height: 78px;
+
+    /* 화면 중앙정렬 */
+    margin: 0 auto;
+}
+
+/* 
+flex를 사용했을 경우 align-items를 사용할 수 있다.
+center를 이용하면 세로 가운데 정렬됨
+*/
+header .menu-group {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+header .logo {
+    margin-right: 10px;
+}
+
+/* 
+a태그의 display를 변경하지 않으면 내부에 이미지 표현불가 
+(inline은 범위를 가지지못하고 범위가 없으면 내부에 이미지 표현이 불가능함)
+
+이미지를 background에 url로 삽입한 경우 alt를 넣을 수 없다.
+HTML에는 GitHub라는 Text를 넣어놓고 text-indent:-9999px을 넣으면
+대체 텍스트를 사용한다는 것을 명시할 수 있다.
+*/
+header .logo a {
+    background: url("../img/logo.svg");
+    width: 32px;
+    height: 32px;
+    display: block;
+    text-indent: -9999px;
+}
+
+header .logo a:hover {
+    background: url("../img/logo_on.svg");
+}
+
+header .main-menu {
+    display: flex
+}
+
+/* 
+padding을 이용하여 확보하면 margin보다 넓은 공간을 확보할 수 있다.
+버튼 크기가 작은경우 클릭범위를 넓혀주는데 좋다.
+a는 display가 inline이기 때문에 padding요소를 제대로 사용할 수 없기 때문에
+block으로 변경한다. (inline은 범위를 가지지 못한다.)
+*/
+header .main-menu li a {
+    display: block;
+    padding: 10px;
+    color: #3c4146;
+}
+
+header .main-menu li a:hover {
+    color: #4078c0
+}
+
+header .sign-group {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+header .btn-group {
+    order: 2;
+    display: flex;
+
+}
+
+header .btn-group .sign-in {
+    margin-right: 4px;
+}
+
+#search-form {
+    order: 1;
+    margin-right: 12px;
+}
+
+#search {
+    width: 160px;
+    font-size: 14px;
+
+
+/* #search의 다음 형제요소 선택자 (type이 submit) */
+#search + [type="submit"] {
+    display: none;
+}
+
+/* order의 default는 0이기 때문에 정의하지 않음  */
+header .sub-menu {
+    display: flex;
+    margin-right: 10px;
+}
+
+header .sub-menu li a {
+    padding: 8px;
+    display: block;
+    font-size: 13px;
+    color: #3c4146;
+}
+
+header .sub-menu li a:hover {
+    color: #4078c0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
