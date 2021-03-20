@@ -93,8 +93,160 @@
     </header>
     <!-- HEADER END -->
 
+    <!-- VISUAL -->
+    <section class="section section--visual">
+        <div class="inner">
+            
+            <div class="summary">
+                <h2 class="summary__title">
+                    <!-- space를 입력하지 않고 &nbsp;로 구분해주면 두 텍스트가 연결되는 개념으로 완성된다. -->
+                    How people build&nbsp;software
+                </h2>
+                <p class="summary__description">
+                    Millions of developers use GitHub to build personal projects, support their businesses, and&nbsp;work together on open source technologies.
+                </p>
+            </div>
+
+            <form id="sign-form" action="" method="POST">
+                <!-- 
+                    Input은 inline-block이 defaualt이기 때문에 수평으로 쌓임 
+                    줄바꿈 처리를 하기위해 ul을 사용함
+                -->
+                <ul>
+                    <li><input type="text" class="input--text" placeholder="Pick a username"></li>
+                    <li><input type="email" class="input--text" placeholder="Your email address"></li>
+                    <li>
+                        <input type="password" class="input--text" placeholder="Create a password">
+                        <p class="caption">Use at least one letter, one numeral, and seven characters.</p>
+                    </li>
+                    <li>
+                        <button type="submit" class="btn btn--primary">Sign up For GitHub</button>
+                        <p class="caption">By clicking "Sign up for GitHub", you agree to our terms of service and privacy policy. We'll occasionally send you account related emails.</p>
+                    </li>
+                </ul>
+            </form>
+
+        </div>
+    </section>
+    <!-- VISUAL END -->
+
+    <!-- FEATURE -->
+    <section class="section section--feature">
+
+        <div class="summary">
+            <h2 class="summary__title">
+                Welcome home, developers
+            </h2>
+            <p class="summary_description">
+                GitHub fosters a fast, flexible, and collaborative development process that lets you work on your own or with others.
+            </p>
+        </div>
+
+        <div class="video">
+            <!-- 반응형으로 만들기위한 div -->
+            <div class="video-ratio">
+                <iframe width="902" height="507" src="https://www.youtube.com/embed/afvT1c1ii0c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="tiles">
+            <div class="inner">
+                <ul class="clearfix">
+                    <li>
+                        <img src="img/feature-tile__build.png" alt="build">
+                        <h3>For everything you build</h3>
+                        <p>Host and manage your code on GitHub. You can keep your work private or share it with the world.</p>
+                    </li>
+                    <li>
+                        <img src="img/feature-tile__work.png" alt="work">
+                        <h3>A better way to work</h3>
+                        <p>From hobbyists to professionals, GitHub helps developers simplify the way they build software.</p>
+                    </li>
+                    <li>
+                        <img src="img/feature-tile__projects.png" alt="projects">
+                        <h3>Millions of projects</h3>
+                        <p>GitHub is home to millions of open source projects. Try one out or get inspired to create your own.</p>
+                    </li>
+                    <li>
+                        <img src="img/feature-tile__platform.png" alt="platform">
+                        <h3>One platform, from start to finish</h3>
+                        <p>With hundreds of integrations, GitHub is flexible enough to be at the center of your development process.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+    <!-- FEATURE END -->
+
+    <!-- WHERE IS(MAP) -->
+    <section class="section section--where-is">
+        <div class="inner">
+
+            <div class="summary">
+
+                <div class="summary__title">
+                    Where is GitHub?
+                </div>
+                <div class="summary__description">
+                    GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 48 million projects.
+                </div>
+
+            </div>
+
+            <!-- google Map -->
+            <div id="map"></div>
+
+        </div>
+    </section>
+    <!-- WHERE IS END -->
+
+    <section class="section section--pricing">
+
+        <div class="inner">
+            <div class="card">
+                <div class="cell cell1">
+                    <a href="#" class="btn btn--primary">Sign Up For GitHub</a>
+                </div>
+                <div class="cell cell2">
+                    Public projects are always free. Work together across unlimited private repositories for $7 / month.
+                </div>
+            </div>
+        </div>
+
+    </section>
 
 </div>
+
+<script>
+    function initMap() {
+        const myLatLng = {
+            lat: 37.782293,
+            lng: -122.391240
+        }
+
+        const map = new google.maps.Map(
+            document.getElementById("map")
+            , {
+                center: myLatLng
+                , scrollwheel: false /* 지도위에서 scroll사용을 못하도록 */
+                , zoom: 18 /* 초기 확대정보 */
+            }
+        );
+
+        const marker = new google.maps.Marker({
+            position: myLatLng
+            , map: map
+            , title: "GitHub"
+        });
+    }
+</script>
+
+<!-- 
+async: 비동기 처리를 하겠다.
+defer: HTML이 모두 로딩되면 실행한다.
+ -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTQIlxBn5AfKGvsfJiormAE1esN3fcCkg&callback=initMap" async defer></script>
 </body>
 </html>
 
