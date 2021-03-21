@@ -1,0 +1,164 @@
+/* MEDIA QUERY */
+
+/* 
+선택자의 우선순위를 고려해야 한다.
+header .inner는 .section .inner보다 우선순위가 낮기 때문에 header.section으로 선언
+*/
+header.section .inner {
+    max-width: none;
+    height: auto;
+    padding: 0 20px;
+}
+
+/* 같은 속성인 경우 다중 선택자를 이용하고 반드시 줄바꿈한다 (가독성) */
+header .menu-group
+, header .sign-group {
+    float: none;
+}
+
+header .toggle {
+    display: none;
+}
+
+header .menu-group {
+    display: block;
+}
+
+header .logo {
+    padding: 12px 0;
+}
+
+header .main-menu {
+    display: block;
+    margin-bottom: 10px;
+}
+
+header .main-menu li {
+    border-top: 1px solid #e5e5e5;
+}
+
+header .main-menu li a {
+    padding: 16px 0;
+}
+
+/* 
+기존에 사용하는 order는 display가 flex인 경우에만 사용되는 것을 유의해야한다.
+현재 display를 block으로 변경하면서 order는 무의미한 속성이 되는것.
+*/
+header .sign-group {
+    display: block;
+    padding: 10px 20px;
+}
+
+header .btn-group {
+    display: block;
+}
+
+header .btn-group .btn {
+    justify-content: center;
+}
+
+header .btn-group .sign-in {
+    margin-right: 0;
+    margin-bottom: 12px;
+}
+
+#search-form {
+    margin-top: 12px;
+    margin-right: 0;
+
+}
+
+#search {
+    width: 100%;
+    height: 42px;
+    text-align: center;
+}
+
+header .sub-menu {
+    margin-top: 12px;
+    margin-right: 0;
+    justify-content: center;
+}
+
+header .toggle {
+    display: none;
+}
+
+header .toggle.on {
+    display: block;
+}
+
+#toggle-btn {
+    display: block; /* 기본값이지만 display:none을 덮어쓰기 위해 명시함 */
+}
+
+/* VISUAL */
+.section--visual {
+    background-image: url("../img/bg-small.jpg");
+}
+
+.section--visual .inner {
+    display: block;
+    max-width: none;
+    padding: 80px 20px;
+}
+
+.section--visual .summary {
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 50px;
+}
+
+#sign-form {
+    /* 
+    width를 초기화하고 max-width를 500으로 주면
+    500px보다 작아지면 양쪽 사이드에 알아서 맞춰진다.
+        */
+    width: auto;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* FEATURE */
+.section--featrue .summary {
+    padding: 66px 20px 0 20px;
+}
+
+.section--feature .tiles li {
+    width: 50%;
+}
+
+.section--featrue .tiles li:nth-child(2) {
+    border-right: none;
+}
+
+.section--featrue .tiles li img {
+    padding: 14px 30% 24px;
+}
+
+/* WHERE IS */
+.section--where-is .inner {
+    max-width: none;
+    padding: 80px 20px 0 20px;
+}
+
+/* PRICING CARD */
+.section--pricing .inner {
+    max-width: none
+    padding: 80px 20px;
+}
+
+.section--pricing .card .cell2 {
+    font-size: 20px;
+}
+
+/* FOOTER */
+footer .inner {
+    padding: 50px 20px;
+}
+
+footer .logo {
+    display: none;
+}
+

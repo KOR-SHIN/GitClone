@@ -65,7 +65,7 @@ a {
     background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
     border: 1px sloid #d5d5d5;
     border-radius: 4px;
-    display: inline-flex; 
+    display: flex; 
     /* width:auto(100%와 유사하게 동작함) */
     /* inline으로 정의하면 모든 넓이를 사용하지 않고 안에 있는 컨텐츠에 맞춰줌 */
     align-items: center; /* 수직 가운데 정렬 */
@@ -264,6 +264,18 @@ header .sub-menu li a {
 
 header .sub-menu li a:hover {
     color: #4078c0;
+}
+
+#toggle-btn {
+    display: none;
+    background-image: url("../img/toggle-btn.svg");
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    cursor: pointer;
+    text-indent: -9999px; /* 대체텍스트를 화면에서 사라지게 해줌 */
 }
 
 /* VISUAL */
@@ -515,6 +527,57 @@ padding으로 인해 크기가 커지지 않도록 box-sizing: border-box를 사
     line-height: 1.5;
     flex: 1; /* 텍스트가 가변될 수 있도록 grow를 1 basis를 0으로 설정 */
     border-left: 1px solid #e5e5e5;
+}
+
+/* FOOTER */
+footer {
+
+}
+
+footer .inner {
+    padding: 50px 0;
+    border-top: 1px solid #eee;
+}
+
+footer .site-links {
+    display: flex;
+}
+
+footer .site-links li {
+    font-size: 12px;
+    margin-right: 10px;
+    color: #767676;
+}
+
+footer .site-links li a {
+    color: #4078c0;
+}
+
+footer .site-links li a:hover {
+    text-decoration: underline;
+}
+
+footer .logo {
+    /* 
+    특정 영역에서 가운데 배치(정렬 X)을 위한 설정이다.
+    width, height를 반드시 설정해야한다.
+    */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 24px;
+    height: 24px;
+}
+
+footer .logo svg:hover {
+    /* 
+    SVG를 제어할 수 있는 속성중 fill이라는 것이 있으며
+    색상을 변경해 줄 수 있다.
+    */
+    fill: #4078c0;
 }
 
 
